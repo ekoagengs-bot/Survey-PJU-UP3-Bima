@@ -10,10 +10,8 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-    // Open the live PJU Inspection PRO deployment in the user's normal browser.
-    // This avoids Google Apps Script / Google Drive authentication restrictions
-    // that can occur inside Android WebView.
-    private static final String WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwtGe3hlS4ourI1l8yvVc-4gAVciRanJ1NIKmL0kfl2rKNf0V1kcRAF1L-3ZPZPQ5GYUA/exec";
+    // Live PJU Inspection PRO Google Apps Script deployment.
+    private static final String WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyuGaufOtMkVaqo6Pc5wCPHCTKqK9IktDg6Z38J2F-8usitdYuVNduyPV8Iw6HA8xjjew/exec";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +22,8 @@ public class MainActivity extends Activity {
     private void openWebApp() {
         Uri uri = Uri.parse(WEB_APP_URL);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-
-        // Prefer Chrome because it shares the user's normal Google sign-in
-        // session, which is important for Apps Script deployments.
         intent.setPackage("com.android.chrome");
+
         try {
             startActivity(intent);
             finish();
