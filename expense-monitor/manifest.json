@@ -1,0 +1,10 @@
+{
+  "name": "MoniKas — Pemantauan Pengeluaran",
+  "short_name": "MoniKas",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fb",
+  "theme_color": "#0f172a",
+  "description": "Aplikasi pemantauan pengeluaran pribadi dan rumah tangga.",
+  "icons": []
+}
