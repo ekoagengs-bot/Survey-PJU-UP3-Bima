@@ -53,11 +53,9 @@ public class MainActivity extends Activity {
         getWindow().setStatusBarColor(Color.rgb(16, 42, 67));
         getWindow().setNavigationBarColor(Color.rgb(16, 42, 67));
 
-        if (getPreferences(Context.MODE_PRIVATE).getBoolean(PREF_LOGGED_IN, false)) {
-            showApp();
-        } else {
-            showLogin();
-        }
+        boolean loggedIn = getPreferences(Context.MODE_PRIVATE).getBoolean(PREF_LOGGED_IN, false);
+        boolean remember = getPreferences(Context.MODE_PRIVATE).getBoolean(PREF_REMEMBER, false);
+        if (loggedIn && remember) showApp(); else showLogin();
     }
 
     private int dp(float value) {
@@ -227,6 +225,7 @@ public class MainActivity extends Activity {
         logout.setOnClickListener(v -> {
             getPreferences(Context.MODE_PRIVATE).edit()
                     .putBoolean(PREF_LOGGED_IN, false)
+                    .putBoolean(PREF_REMEMBER, false)
                     .apply();
             if (webView != null) webView.clearCache(false);
             showLogin();
